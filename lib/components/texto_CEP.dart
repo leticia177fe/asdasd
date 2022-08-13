@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 class textoCEP extends StatefulWidget {
-  textoCEP({ Key? key }) : super(key: key);
+  textoCEP({ Key? key}) : super(key: key);
 
   @override
   _textoCEPState createState() => _textoCEPState();
@@ -12,6 +12,9 @@ class textoCEP extends StatefulWidget {
 class _textoCEPState extends State<textoCEP> {
 
   String textoCep = "";
+
+  TextEditingController caixa_texto = TextEditingController();
+  
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +27,9 @@ class _textoCEPState extends State<textoCEP> {
           return AlertDialog(
             title: Text('Digite seu CEP'),
             content: TextField(
-          decoration: InputDecoration(
-          fillColor: Colors.white,
-          enabledBorder: OutlineInputBorder(
+              controller: caixa_texto,
+            decoration: InputDecoration(
+            enabledBorder: OutlineInputBorder(
             borderSide: BorderSide (width: 1, color: Color(0xfff5d415))
           ),
           ),
@@ -50,7 +53,7 @@ class _textoCEPState extends State<textoCEP> {
                 onPressed: () {
                   print('Ok');
                   Navigator.pop(context);
-                  _textoCEPState();
+                  caixa_texto.text;
                 },
               child: const Text(
                 'Ok',
@@ -70,7 +73,7 @@ class _textoCEPState extends State<textoCEP> {
           const Icon(
             Icons.location_on,
             color: Colors.black,),
-          Text("Enviar para ${textoCep}"),
+          Text("Enviar para o CEP: ${caixa_texto.text}"), 
         ]
         ),
         );
